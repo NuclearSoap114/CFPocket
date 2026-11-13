@@ -1,6 +1,6 @@
 # CF Pocket Android
 
-当前版本 0.5.1 (6)。完整功能与运行说明见[仓库 README](../README.md)。
+当前版本 0.5.2 (7)。完整功能与运行说明见[仓库 README](../README.md)。
 
 用 Android Studio 打开本目录，或配置 JDK 与 Android SDK 后运行 `./gradlew assembleDebug`。
 

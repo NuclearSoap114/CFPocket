@@ -19,6 +19,13 @@ for p in sorted((sdk/'lib/clang/22/include').rglob('*')):
 with tarfile.open(args.archive) as t:
  m=next(m for m in t.getmembers() if m.name.endswith('/lib/clang/22/lib/wasm32-unknown-wasip1/libclang_rt.builtins.a'))
  temporary=tempfile.TemporaryDirectory(); b=Path(temporary.name)/'official-builtins.a';b.write_bytes(t.extractfile(m).read());entries['lib/wasm32-wasip1/libclang_rt.builtins.a']=b
+
+def neutral_metadata(info):
+ info.uid=info.gid=info.mtime=0
+ info.uname=info.gname=''
+ info.pax_headers={}
+ return info
+
 with tarfile.open(out,'w',format=tarfile.USTAR_FORMAT,dereference=True) as t:
  directories=set()
  for rel,p in entries.items():
@@ -26,5 +33,5 @@ with tarfile.open(out,'w',format=tarfile.USTAR_FORMAT,dereference=True) as t:
   for d in reversed(dirs):
    if str(d) not in directories:
     info=tarfile.TarInfo(str(d));info.type=tarfile.DIRTYPE;info.mode=0o755;t.addfile(info);directories.add(str(d))
-  t.add(p,arcname=rel,recursive=False)
+  t.add(p,arcname=rel,recursive=False,filter=neutral_metadata)
 print('Official SDK tar',len(entries),'files',len(directories),'directories',out.stat().st_size,'bytes')

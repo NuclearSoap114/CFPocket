@@ -20,7 +20,8 @@
     "one Worker per job",
     "loopback-only local resources",
     "origin-restricted Android WebMessage listener",
-    "Android WebView exnref capability check before C++ execution"
+    "Android WebView exnref capability check before C++ execution",
+    "normalized archive owner and timestamps"
   ],
   "files": {
     "android-host.js": {
@@ -73,7 +74,7 @@
     },
     "cpp/sysroot22.tar": {
       "bytes": 62003200,
-      "sha256": "6d1ebf795d3a928f300ae3808975eed7675ad3e8513cc8f0fe64d2c8c0b145ee"
+      "sha256": "1a9175fe92163bedaa81ff9abac2142af807591c21b0fdbb2e59936cf2cde93a"
     },
     "index.html": {
       "bytes": 184,

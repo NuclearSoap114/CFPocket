@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-12",
+  "generatedAt": "2026-11-13",
   "cpp": {
     "compiler": "Clang/LLD 22.1.8 WASM",
     "compilerRelease": "https://github.com/cppstudio-io/wasm-clang-runtime/releases/tag/v0.1.0",
@@ -18,7 +18,8 @@
     "USTAR filename prefix handling",
     "64KiB output hard stop",
     "one Worker per job",
-    "loopback-only local resources"
+    "loopback-only local resources",
+    "normalized archive owner and timestamps"
   ],
   "files": {
     "controller.js": {
@@ -67,7 +68,7 @@
     },
     "cpp/sysroot22.tar": {
       "bytes": 62003200,
-      "sha256": "6d1ebf795d3a928f300ae3808975eed7675ad3e8513cc8f0fe64d2c8c0b145ee"
+      "sha256": "1a9175fe92163bedaa81ff9abac2142af807591c21b0fdbb2e59936cf2cde93a"
     },
     "index.html": {
       "bytes": 290,
