@@ -1,0 +1,11 @@
+*.swift text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.md text eol=lf
+*.wasm binary
+*.tar binary
+*.zip binary
+**/clang22 binary
+**/lld22 binary
+**/memfs binary
+*.bat text eol=crlf

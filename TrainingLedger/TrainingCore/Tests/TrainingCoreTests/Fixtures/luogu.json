@@ -1,0 +1,38 @@
+{
+  "data": {
+    "records": {
+      "count": 40,
+      "perPage": 20,
+      "result": [
+        {
+          "id": 111001,
+          "submitTime": 1700000000,
+          "status": 12,
+          "language": 28,
+          "user": {
+            "uid": 10001
+          },
+          "problem": {
+            "pid": "P2812",
+            "name": "校园网络 / [IOI 1996 / USACO5.3] 校园网 Network of Schools 加强版",
+            "difficulty": 5
+          }
+        },
+        {
+          "id": 111002,
+          "submitTime": 1700000060,
+          "status": 12,
+          "language": 28,
+          "user": {
+            "uid": 10001
+          },
+          "problem": {
+            "pid": "P5788",
+            "name": "【模板】单调栈",
+            "difficulty": 3
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+# Local builds and dependencies
+.DS_Store
+._*
+.build/
+.swiftpm/
+DerivedData/
+.gradle/
+build/
+node_modules/
+xcuserdata/
+*.xcuserstate
+local.properties
+.env
+.env.*
+!.env.example
+# Signing material and generated installers
+*.p12
+*.p8
+*.mobileprovision
+*.provisionprofile
+*.jks
+*.keystore
+*.password
+*.ipa
+*.apk
+*.aab
+*.xcarchive
+# Personal captures and local verification logs
+*.xcresult/
+*.log
+TrainingLedger/TrainingCore/Tests/TrainingCoreTests/Fixtures/cf-own.json
+TrainingLedger/TrainingCore/Tests/TrainingCoreTests/Fixtures/at-own.json
+TrainingLedger/TrainingCore/Tests/TrainingCoreTests/Fixtures/nowcoder.html
+TrainingLedger/TrainingCore/Tests/TrainingCoreTests/Fixtures/qoj.html
+TrainingLedger/TrainingCore/Tests/TrainingCoreTests/Fixtures/hydro.html

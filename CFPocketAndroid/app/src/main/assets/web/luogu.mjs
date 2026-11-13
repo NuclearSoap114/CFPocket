@@ -1,0 +1,20 @@
+import {imageURL, sanitizeImages} from './images.mjs';
+// Adapter for Luogu's actual lentille-context payload; no account cookies enter the app bridge.
+export const difficulties=['暂无评定', '入门', '普及−', '普及', '普及+/提高−', '提高', '提高+/省选−', '省选/NOI−', 'NOI/NOI+/CTS'];
+export function pid(p){if(!Number.isInteger(p.contest)||p.contest<=0||p.contest>=100000||!/^([A-Z][0-9]{0,2})$/.test(p.index))throw Error('这类题号暂没有可靠的洛谷对应关系。');return `CF${p.contest}${p.index}`;}
+function payload(raw,template){if(typeof raw==='string'){if(raw.length>8000000)throw Error('洛谷页面过大。');raw=JSON.parse(raw);}if(raw?.status===401){const e=Error('请先登录洛谷，再返回这里读取题解。');e.login=true;throw e;}if(raw?.status===404)throw Error('洛谷暂未收录这道题。');if(raw?.status!==200||raw.template!==template||!raw.data)throw Error('洛谷暂未返回完整内容，原缓存保留。');return raw.data;}
+export function problem(raw,expected,now=new Date()){const p=payload(raw,'problem.show').problem;if(p?.pid!==expected||typeof p.name!=='string'||!p.name.trim()||!Number.isInteger(p.difficulty)||!difficulties[p.difficulty])throw Error('洛谷题号或难度核对失败。');return {pid:expected,name:p.name,difficulty:p.difficulty,at:now.toISOString()};}
+export function solutions(raw,expected,page,now=new Date()){
+ const d=payload(raw,'problem.solution'),s=d.solutions;if(d.problem?.pid!==expected||!Number.isInteger(page)||page<1||page>1000||!s||!Number.isInteger(s.count)||s.count<0||s.count>100000||!Number.isInteger(s.perPage)||s.perPage<1||s.perPage>100||!Array.isArray(s.result)||s.result.length!==Math.min(s.perPage,Math.max(0,s.count-(page-1)*s.perPage)))throw Error('洛谷题解列表不完整，未替换已有缓存。');
+ const seen=new Set(),articles=s.result.map(a=>{if(a.contentFull===false||(a.solutionFor?.pid&&a.solutionFor.pid!==expected)||!/^[a-zA-Z0-9]{6,32}$/.test(a.lid)||seen.has(a.lid)||typeof a.author?.name!=='string'||!a.author.name.trim()||!Number.isInteger(a.author.uid)||a.author.uid<=0||typeof a.time!=='number'||a.time<=0||a.time>now.getTime()/1000+86400||typeof a.content!=='string'||!a.content.trim()||new TextEncoder().encode(a.content).length>262144)throw Error('题解缺少作者、正文或有效标识，原缓存保留。');seen.add(a.lid);return {id:a.lid,title:typeof a.title==='string'&&a.title.trim()?a.title:`${expected} · ${a.author.name}的题解`,author:a.author.name,authorID:a.author.uid,time:new Date(a.time*1000).toISOString(),markdown:a.content,note:typeof a.adminNote==='string'?a.adminNote:null,votes:Number.isInteger(a.upvote)?a.upvote:null};});
+ return {pid:expected,page,pageSize:s.perPage,total:s.count,articles,at:now.toISOString(),hasMore:page*s.perPage<s.count};
+}
+export function safeURL(raw,image=false){if(image)return imageURL(raw);try{const u=new URL(raw,'https://www.luogu.com.cn');return u.protocol==='https:'&&!u.username&&!u.password&&!u.port&&['www.luogu.com.cn','codeforces.com'].includes(u.hostname)?u.href:null;}catch{return null;}}
+export function renderMarkdown(text,{marked,DOMPurify,document}){
+ // Keep TeX exact; code tokens are left to the Markdown parser and never interpreted as math.
+ const math=[],prefix='POCKETMATH'+Math.random().toString(36).slice(2).toUpperCase();
+ const protectedText=text.replace(/```[\s\S]*?```|~~~[\s\S]*?~~~|`[^`\n]*`|\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|(?<!\$)\$[^\s$][^$\n]*?\$(?!\$)/g,s=>{if(s[0]==='`'||s.startsWith('~~~'))return s;const token=prefix+math.length+'END';math.push([token,s]);return token;});
+ let html=marked.parse(protectedText);for(const [token,value] of math)html=html.replaceAll(token,()=>value.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'));
+ const clean=DOMPurify.sanitize(html,{ALLOWED_TAGS:['p','div','span','h1','h2','h3','h4','h5','h6','strong','b','em','i','del','ul','ol','li','blockquote','pre','code','table','thead','tbody','tr','td','th','a','hr','br','sup','sub','img'],ALLOWED_ATTR:['href','src','alt','class','colspan','rowspan'],ALLOW_DATA_ATTR:false});
+ const root=document.createElement('div');root.innerHTML=clean;root.querySelectorAll('a').forEach(a=>{const u=safeURL(a.getAttribute('href'));if(u)a.href=u;else a.removeAttribute('href');});sanitizeImages(root);return root.innerHTML;
+}

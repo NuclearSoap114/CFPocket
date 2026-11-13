@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-13",
+  "cpp": {
+    "compiler": "Clang/LLD 22.1.8 WASM",
+    "compilerRelease": "https://github.com/cppstudio-io/wasm-clang-runtime/releases/tag/v0.1.0",
+    "sysroot": "Official WebAssembly/wasi-sdk 33, noeh libc++ (teaching iostream removed)",
+    "sysrootRelease": "https://github.com/WebAssembly/wasi-sdk/releases/tag/wasi-sdk-33",
+    "memfs": "rebuilt from upstream source using Clang 22 and WASI libc; MAX_NODES=8192"
+  },
+  "python": {
+    "runtime": "Pyodide 314.0.7",
+    "interpreter": "CPython 3.14.2",
+    "release": "https://github.com/pyodide/pyodide/releases/tag/314.0.7"
+  },
+  "patches": [
+    "separate fd stdout/stderr forwarding",
+    "USTAR filename prefix handling",
+    "64KiB output hard stop",
+    "one Worker per job",
+    "loopback-only local resources",
+    "origin-restricted Android WebMessage listener",
+    "Android WebView exnref capability check before C++ execution"
+  ],
+  "files": {
+    "android-host.js": {
+      "bytes": 94,
+      "sha256": "ac0275098792e9bfccfb9addb21373c4e6afa978f1376e9dd74d9187d71e205d"
+    },
+    "controller.js": {
+      "bytes": 3348,
+      "sha256": "77a2532ff19757cc578878ddbe56ce6f7c9cef393cd9e0b153af6e1e81486da2"
+    },
+    "cpp/LICENSE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "cpp/LICENSE-libcxx.txt": {
+      "bytes": 16703,
+      "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b"
+    },
+    "cpp/LICENSE-musl.txt": {
+      "bytes": 6196,
+      "sha256": "b870108ec5e7790e9f9919064f1b9421d62d5f9b0e6c230c6adf7ea2da62e97b"
+    },
+    "cpp/LICENSE-wasi-libc.txt": {
+      "bytes": 910,
+      "sha256": "2711a8b5a5cdfef0e639f96c1aca12ae23d7d64a02d0507f1bdf14d2b27bbc3a"
+    },
+    "cpp/LICENSE.llvm": {
+      "bytes": 15140,
+      "sha256": "ebcd9bbf783a73d05c53ba4d586b8d5813dcdf3bbec50265860ccc885e606f47"
+    },
+    "cpp/NOTICE": {
+      "bytes": 755,
+      "sha256": "b5d7bcfb23672141736fee1289c7cdc265c42a29bb47a153d37ec85a7a950a7f"
+    },
+    "cpp/clang22": {
+      "bytes": 36037953,
+      "sha256": "3f3da7691ecc5d02d7f056ba849eed408fcf494656ad65b5756ba285e59d30a5"
+    },
+    "cpp/lld22": {
+      "bytes": 19142147,
+      "sha256": "4d88d4faa2bbe22dfb099bf28d8c5884fb3e90462acca4057dbb96746ce99ac4"
+    },
+    "cpp/memfs": {
+      "bytes": 97121,
+      "sha256": "d85d70ab6b1a4420d31aac187fdfd4781917ac1f6df5bd94932adfbbbe05162d"
+    },
+    "cpp/shared.js": {
+      "bytes": 34864,
+      "sha256": "64bade88e6c317596f91e13d30643a23e980d69940ecbb7eb40e3952244a50d5"
+    },
+    "cpp/sysroot22.tar": {
+      "bytes": 62003200,
+      "sha256": "6d1ebf795d3a928f300ae3808975eed7675ad3e8513cc8f0fe64d2c8c0b145ee"
+    },
+    "index.html": {
+      "bytes": 184,
+      "sha256": "a76e1e944d477ecea4a24cca5dc50db9e7479274f33eff0d64ed01ce03ecee61"
+    },
+    "python/LICENSE-pyodide.txt": {
+      "bytes": 16725,
+      "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5"
+    },
+    "python/LICENSE-python.txt": {
+      "bytes": 13804,
+      "sha256": "b0e25a78cffb43f4d92de8b61ccfa1f1f98ecbc22330b54b5251e7b6ba010231"
+    },
+    "python/pyodide-lock.json": {
+      "bytes": 119077,
+      "sha256": "5dc2fc119108bc148c7457dc86e7675b5c87e1cafd420b9c34c1eaef7b36c010"
+    },
+    "python/pyodide.asm.mjs": {
+      "bytes": 1250344,
+      "sha256": "f7cdc8ece80678ceb712f8e65ebe6d3a83203a180c399865f49612a051693635"
+    },
+    "python/pyodide.asm.wasm": {
+      "bytes": 9598218,
+      "sha256": "cc36e3cab04fdfc9a63ff13eb52eae2b911bf46c025cc7b281f394bd3de1d5e6"
+    },
+    "python/pyodide.js": {
+      "bytes": 18912,
+      "sha256": "3141b814715a72e59b51b1b18b9ceae5bf19f7c852417e431bb0a34feadf825c"
+    },
+    "python/pyodide.mjs": {
+      "bytes": 17931,
+      "sha256": "6f1d60f7bf529beb300f0f47983c921d3982363640ba20af0e38efdddbc66109"
+    },
+    "python/python_stdlib.zip": {
+      "bytes": 2545637,
+      "sha256": "fa1957e5777068fc4f7437f96d860ae2fbe9c19732ba06c84e004ec16dd7dd7a"
+    },
+    "runner-worker.js": {
+      "bytes": 5523,
+      "sha256": "58bb49dc02fc41ed6bdd000c3f5cce360d73d2598b5990e02cf9a949a1b3411b"
+    }
+  },
+  "platform": "Android"
+}

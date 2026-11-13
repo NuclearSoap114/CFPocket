@@ -1,0 +1,1 @@
+<inset xmlns:android="http://schemas.android.com/apk/res/android" android:inset="2dp"><bitmap android:src="@drawable/cf_pocket_icon" android:gravity="fill" android:filter="true" /></inset>

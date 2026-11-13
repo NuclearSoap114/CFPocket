@@ -1,0 +1,21 @@
+{
+  "name": "cfpocket-android",
+  "version": "0.5.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "build:reader": "node tools/build-reader.mjs",
+    "build:editor": "node tools/build-editor.mjs",
+    "build:submission": "node tools/build-submission.mjs"
+  },
+  "dependencies": {
+    "dompurify": "3.4.17",
+    "highlight.js": "11.11.1",
+    "marked": "15.0.12"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "jsdom": "26.1.0"
+  }
+}

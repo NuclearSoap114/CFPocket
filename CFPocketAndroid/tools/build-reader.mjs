@@ -1,0 +1,11 @@
+import {build} from 'esbuild';
+import {dirname,resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {copyFile,mkdir} from 'node:fs/promises';
+const project=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+const ios=resolve(project,'../TrainingLedger/CFPocket/Resources/Reader');
+const android=resolve(project,'app/src/main/assets/Reader');
+await mkdir(android,{recursive:true});
+await build({entryPoints:[resolve(project,'tools/code-highlight.mjs')],bundle:true,format:'iife',target:['safari18','chrome111'],minify:true,outfile:resolve(ios,'code-highlight.js')});
+for(const file of ['code-highlight.js','code-theme.css'])await copyFile(resolve(ios,file),resolve(android,file));
+await copyFile(resolve(project,'node_modules/dompurify/dist/purify.min.js'),resolve(project,'app/src/main/assets/web/vendor/purify.js'));

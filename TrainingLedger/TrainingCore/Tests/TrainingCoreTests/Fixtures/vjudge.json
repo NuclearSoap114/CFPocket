@@ -1,0 +1,25 @@
+{
+  "draw": 1,
+  "recordsTotal": 9999999,
+  "recordsFiltered": 9999999,
+  "data": [
+    {
+      "runId": 211001,
+      "time": 1700000000000,
+      "oj": "QOJ",
+      "probNum": "9769",
+      "userName": "fixture_user",
+      "status": "Accepted",
+      "language": "C++ 20"
+    },
+    {
+      "runId": 211002,
+      "time": 1700000060000,
+      "oj": "CodeForces",
+      "probNum": "2208B",
+      "userName": "fixture_user",
+      "status": "Accepted",
+      "language": "GNU G++20"
+    }
+  ]
+}

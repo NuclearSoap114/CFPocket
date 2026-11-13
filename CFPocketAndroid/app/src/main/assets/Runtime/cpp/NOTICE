@@ -1,0 +1,20 @@
+wasm-clang-runtime
+Copyright 2026 CppStudio
+
+This product includes software derived from wasm-clang
+(https://github.com/binji/wasm-clang),
+Copyright 2020 WebAssembly Community Group participants,
+licensed under the Apache License, Version 2.0.
+
+This product includes binaries built from the LLVM Project
+(https://llvm.org), licensed under the Apache License v2.0
+with LLVM Exceptions (see LICENSE.llvm).
+
+This product includes a sysroot derived from wasi-sdk
+(https://github.com/WebAssembly/wasi-sdk), licensed under
+the Apache License v2.0 with LLVM Exceptions.
+
+src/memfs/memfs.c is derived from wasm-clang's memfs (Apache 2.0),
+recompiled with an increased node limit.
+src/memfs/stb_sprintf.h is by Sean Barrett, public domain / MIT
+(see file header).
